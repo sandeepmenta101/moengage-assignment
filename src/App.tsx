@@ -1,24 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
+import { fetchHighLightsData, fetchIncomeData, fetchCountriesData, fetchBuyersData } from './redux/actions/app.actions';
+import Header from './common/Header';
+import Card from './common/Card';
 function App() {
+  const dispatch = useDispatch();
+  const { income, highLights, countries, buyers } = useSelector((state: any) => state.appReducer);
+
+  useEffect(() => {
+    dispatch(fetchHighLightsData('get_highlight'));
+    dispatch(fetchIncomeData('get_income'));
+    dispatch(fetchCountriesData('get_country'));
+    dispatch(fetchBuyersData('get_buyer'));
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <section>
+      <Card headerTitle="Highlights" data={highLights} />
+      <Card headerTitle="Buyers" data={buyers} />
+      <Card headerTitle="Countries" data={countries} />
+      <Card headerTitle="Income" data={income} />
+      </section>
     </div>
   );
 }

@@ -1,0 +1,11 @@
+@import '../_variables/app.scss';
+
+.table{
+    tr:nth-child(even){
+        background-color: $oddColumnColor;
+    }
+    td, th{
+        padding: 0.5rem;
+        text-align: left;
+    }
+}

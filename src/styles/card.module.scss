@@ -1,0 +1,48 @@
+@import '../_variables/app.scss';
+@import '../_variables/mixins.scss';
+
+.card{
+    margin: 10px;
+    box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.25);
+    .cardHeader{
+        width: 800px;
+        background-color: $cardHeaderBgColor;
+        border-top: 4px solid $borderColor;
+        color: $fontColor;
+        padding: 0 15px;
+        @include contentCenter;
+        aside{
+            select{
+                background-color: transparent;
+                color: #fff;
+                padding: 0.5rem;
+                border-radius: 4px;
+                border-color: $fontColor;
+            }
+            .button{
+                background-color: transparent;
+                border: 0;
+                outline: none;
+                i{
+                    color: $fontColor;
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+    .statistics{
+        width: 30%;
+        float: left;
+        background-color: $progressBarColumnColor;
+        color: $fontColor;
+        padding-bottom: 1rem;
+        ul{
+            @include listStyles;
+        }
+        h1{
+            font-weight: lighter;
+            padding-left: 1.5rem;
+        }
+    }
+
+}

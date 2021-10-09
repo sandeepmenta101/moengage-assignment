@@ -1,0 +1,12 @@
+@import '../_variables/app.scss';
+@import '../_variables/mixins.scss';
+
+.progress::-webkit-progress-bar{
+    background-color: $cardHeaderBgColor;
+}
+.progress::-webkit-progress-value{
+    color: $progressBarColor;
+}
+.labelGroup{
+    @include contentCenter;
+}

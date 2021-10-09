@@ -1,0 +1,13 @@
+@import '../_variables/app.scss';
+
+.header{
+    background-color: $backgroundColor;
+    .brand{
+        padding: 10px;
+        a{
+            color: $fontColor;
+            text-decoration: none;
+            font-size: 2rem;
+        }
+    }
+}
