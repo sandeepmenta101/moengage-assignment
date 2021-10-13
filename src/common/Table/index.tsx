@@ -1,16 +1,31 @@
-export default function Table(){
-    return <table>
-        <thead>
-            <tr>
-                <th>Month</th>
-                <th>INR</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>FRI</td>
-                <td>215</td>
-            </tr>
-        </tbody>
+import { TableData } from '../../interfaces/tableData.interface';
+import styles from '../../styles/table.module.scss';
+
+type TableProps = {
+  header: Array<String>;
+  data: [TableData, TableData, TableData, TableData, TableData, TableData, TableData];
+};
+
+export default function Table(props: TableProps) {
+  const { header, data } = props;
+
+  return (
+    <table className={styles.table}>
+      <thead>
+        <tr>
+          {header?.map((head: String) => (
+            <th>{head}</th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {data?.map((row) => (
+          <tr>
+            <td style={{color: row.color}}>{row.label}</td>
+            <td style={{color: row.color}}>{row.value}</td>
+          </tr>
+        ))}
+      </tbody>
     </table>
+  );
 }

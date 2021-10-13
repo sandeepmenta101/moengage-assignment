@@ -1,17 +1,21 @@
 @import '../_variables/app.scss';
 @import '../_variables/mixins.scss';
 
-.card{
+.fullSizeCard, .card{
     margin: 10px;
     box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.25);
+    width: 700px;
     .cardHeader{
-        width: 800px;
         background-color: $cardHeaderBgColor;
         border-top: 4px solid $borderColor;
         color: $fontColor;
         padding: 0 15px;
         @include contentCenter;
         aside{
+            h1{
+                font-size: 2.5rem;
+                font-weight: lighter;
+            }
             select{
                 background-color: transparent;
                 color: #fff;
@@ -23,6 +27,7 @@
                 background-color: transparent;
                 border: 0;
                 outline: none;
+                cursor: pointer;
                 i{
                     color: $fontColor;
                     font-size: 20px;
@@ -35,14 +40,43 @@
         float: left;
         background-color: $progressBarColumnColor;
         color: $fontColor;
-        padding-bottom: 1rem;
+        padding-bottom: 13rem;
+        padding-right: 1rem;
         ul{
             @include listStyles;
         }
-        h1{
+        h1{    
             font-weight: lighter;
-            padding-left: 1.5rem;
+            font-size: 1.5rem;
+            padding-left: 1.2rem;
+            padding-top: 1rem;
         }
     }
+    .table{
+        width: 70%;
+        float: right;
+        .tableTitle{
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            div{
+                padding: 1rem;
+                &:first-child{
+                    width: 70%;
+                    border-right: 1px solid #ccc;
+                }
+            }
+        }
+    }
+}
 
+.fullSizeCard{
+    width: 100vw;
+    height: 90vh;
+    .statistics{
+        height: 90vh;
+    }
+    .table{
+        height: 79vh;
+    }
 }

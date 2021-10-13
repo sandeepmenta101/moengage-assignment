@@ -29,3 +29,8 @@ export const fetchBuyersData = (data: string) => (dispatch: any) => {
         dispatch({type: types.GET_BUYERS_DATA_SUCCESS, payload: response});
     }).catch(err => dispatch({ type: types.GET_BUYERS_DATA_FAIL, payload: err })); 
 }
+
+export const toggleFullScreenCard = (title: string) => (dispatch: any) => {
+    dispatch({ type: types.FULL_SCREEN, payload: title });
+    return true;
+}

@@ -5,5 +5,9 @@ export default {
     highLights: {},
     buyers: {},
     countries: {},
-    income: {}
+    income: {},
+    highlightsFullScreen: false,
+    countriesFullScreen: false,
+    incomeFullScreen: false,
+    buyersFullScreen: false
 }

@@ -1,5 +1,6 @@
 import initialState from "./initialState";
 import Types from '../actionTypes/app.actionTypes';
+import { screen } from '@testing-library/react';
 
 export default function (state = initialState, action: any) {
     switch (action.type) {
@@ -70,14 +71,30 @@ export default function (state = initialState, action: any) {
             return {
                 ...state,
                 isLoading: false,
-                apiResponse: action?.payload?.message ?? 'Failed to fetch Income Data'
+                apiResponse: action?.payload?.message ?? 'Failed to fetch Income Data',
             }
         case Types.GET_HIGHLIGHTS_DATA_SUCCESS:
             return {
                 ...state,
                 isLoading: false,
                 apiResponse: action?.payload?.message ?? 'Successfully fetched Income',
-                income: action?.payload?.data ?? {}
+                highLights: action?.payload?.data ?? {},
+            }
+        case Types.FULL_SCREEN:
+            const screenName = action.payload +''+ 'FullScreen';
+            let prevScreenValue;
+            if(screenName === 'highlightsFullScreen'){
+                prevScreenValue = state.highlightsFullScreen;
+            }else if(screenName === 'buyersFullScreen'){
+                prevScreenValue = state.buyersFullScreen;
+            }else if(screenName === 'incomeFullScreen'){
+                prevScreenValue = state.incomeFullScreen;
+            }else if(screenName === 'countriesFullScreen'){
+                prevScreenValue = state.countriesFullScreen;
+            }
+            return {
+                ...state,
+                [screenName]: !prevScreenValue
             }
         default:
             return initialState;

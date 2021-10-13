@@ -7,7 +7,7 @@ import Header from './common/Header';
 import Card from './common/Card';
 function App() {
   const dispatch = useDispatch();
-  const { income, highLights, countries, buyers } = useSelector((state: any) => state.appReducer);
+  const { income, highLights, countries, buyers, isLoading, highlightsFullScreen, countriesFullScreen, incomeFullScreen, buyersFullScreen } = useSelector((state: any) => state.appReducer);
 
   useEffect(() => {
     dispatch(fetchHighLightsData('get_highlight'));
@@ -19,12 +19,12 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <section>
-      <Card headerTitle="Highlights" data={highLights} />
-      <Card headerTitle="Buyers" data={buyers} />
-      <Card headerTitle="Countries" data={countries} />
-      <Card headerTitle="Income" data={income} />
-      </section>
+      {isLoading ? <h1>Loading...</h1> : <section>
+      <Card headerTitle="Highlights" data={highLights} fullScreen={highlightsFullScreen}/>
+      <Card headerTitle="Buyers" data={buyers} fullScreen={buyersFullScreen}/>
+      <Card headerTitle="Countries" data={countries} fullScreen={countriesFullScreen} />
+      <Card headerTitle="Income" data={income} fullScreen={incomeFullScreen} />
+      </section>}
     </div>
   );
 }
