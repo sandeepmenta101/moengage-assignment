@@ -14,7 +14,7 @@ function App() {
     dispatch(fetchIncomeData('get_income'));
     dispatch(fetchCountriesData('get_country'));
     dispatch(fetchBuyersData('get_buyer'));
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="App">

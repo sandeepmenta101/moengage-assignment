@@ -1,8 +1,7 @@
 import initialState from "./initialState";
 import Types from '../actionTypes/app.actionTypes';
-import { screen } from '@testing-library/react';
 
-export default function (state = initialState, action: any) {
+export default function appReducer (state = initialState, action: any) {
     switch (action.type) {
         case Types.GET_INCOME_DATA:
             return {
