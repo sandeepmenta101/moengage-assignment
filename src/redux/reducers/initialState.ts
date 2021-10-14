@@ -6,8 +6,11 @@ export default {
     buyers: {},
     countries: {},
     income: {},
-    highlightsFullScreen: false,
-    countriesFullScreen: false,
-    incomeFullScreen: false,
-    buyersFullScreen: false
+    fullScreenMode: {
+        highlights: false,
+        countries: false,
+        income: false,
+        buyers: false
+    },
+    afterViewInitialized: false
 }

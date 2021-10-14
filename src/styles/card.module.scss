@@ -15,6 +15,7 @@
             h1{
                 font-size: 2.5rem;
                 font-weight: lighter;
+                margin: 0.625rem;
             }
             select{
                 background-color: transparent;
@@ -40,7 +41,7 @@
         float: left;
         background-color: $progressBarColumnColor;
         color: $fontColor;
-        padding-bottom: 13rem;
+        padding-bottom: 11rem;
         padding-right: 1rem;
         ul{
             @include listStyles;
@@ -53,12 +54,18 @@
         }
     }
     .table{
-        width: 70%;
+        width: 67%;
         float: right;
         .tableTitle{
             display: flex;
             justify-content: space-between;
             font-size: 1.2rem;
+            .filterLabel{
+                color: $labelTitleColor;
+            }
+            .filterValue{
+                color: $borderColor;
+            }
             div{
                 padding: 1rem;
                 &:first-child{
@@ -74,9 +81,9 @@
     width: 100vw;
     height: 90vh;
     .statistics{
-        height: 90vh;
+        height: 63vh;
     }
-    .table{
-        height: 79vh;
-    }
+}
+.none{
+    display: none;
 }

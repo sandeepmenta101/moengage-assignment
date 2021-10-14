@@ -1,6 +1,6 @@
 @import '../_variables/app.scss';
 
-.table{
+.table, .fullHeightTable{
     width: 100%;
     tr:nth-child(even){
         background-color: $oddColumnColor;
@@ -11,4 +11,7 @@
         border-top: 1px solid #dadee4;
         width: 50%;
     }
+}
+.fullHeightTable{
+    height: 75vh;
 }

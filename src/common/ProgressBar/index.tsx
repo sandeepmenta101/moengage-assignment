@@ -10,10 +10,9 @@ export default function ProgressBar(props: ProgressBarProps) {
 
   return (
     <>
-      <div className={styles.labelGroup
-    }>
+      <div className={styles.labelGroup}>
         <label>{label}</label>
-        <label>{value} %</label>
+        <label>{value}%</label>
       </div>
       <progress value={value} max="100" className={styles.progress}></progress>
     </>

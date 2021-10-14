@@ -81,20 +81,24 @@ export default function (state = initialState, action: any) {
                 highLights: action?.payload?.data ?? {},
             }
         case Types.FULL_SCREEN:
-            const screenName = action.payload +''+ 'FullScreen';
+            const screenName = action.payload;
             let prevScreenValue;
-            if(screenName === 'highlightsFullScreen'){
-                prevScreenValue = state.highlightsFullScreen;
-            }else if(screenName === 'buyersFullScreen'){
-                prevScreenValue = state.buyersFullScreen;
-            }else if(screenName === 'incomeFullScreen'){
-                prevScreenValue = state.incomeFullScreen;
-            }else if(screenName === 'countriesFullScreen'){
-                prevScreenValue = state.countriesFullScreen;
+            if(screenName === 'highlights'){
+                prevScreenValue = state.fullScreenMode.highlights;
+            }else if(screenName === 'buyers'){
+                prevScreenValue = state.fullScreenMode.buyers;
+            }else if(screenName === 'income'){
+                prevScreenValue = state.fullScreenMode.income;
+            }else if(screenName === 'countries'){
+                prevScreenValue = state.fullScreenMode.countries;
             }
             return {
                 ...state,
-                [screenName]: !prevScreenValue
+                fullScreenMode: {
+                    ...state.fullScreenMode,
+                    [screenName]: !prevScreenValue
+                },
+                afterViewInitialized: !prevScreenValue
             }
         default:
             return initialState;
