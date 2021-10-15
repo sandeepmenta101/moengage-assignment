@@ -34,3 +34,8 @@ export const toggleFullScreenCard = (title: string) => (dispatch: any) => {
     dispatch({ type: types.FULL_SCREEN, payload: title });
     return true;
 }
+
+export const sortTheTable = (data: object) => (dispatch: any) => {
+    dispatch({ type: types.SORT_THE_TABLE, payload: data });
+    return true;
+}

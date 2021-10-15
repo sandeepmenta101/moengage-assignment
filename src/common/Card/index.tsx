@@ -1,9 +1,11 @@
+import React, { useState } from 'react';
+
 import styles from "../../styles/card.module.scss";
 import Table from "../Table";
 import ProgressBar from "./../ProgressBar/index";
 import { DataInterface } from "../../interfaces/data.interface";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleFullScreenCard } from "../../redux/actions/app.actions";
+import { toggleFullScreenCard, sortTheTable } from "../../redux/actions/app.actions";
 
 type CardProps = {
   headerTitle: string;
@@ -15,10 +17,17 @@ export default function Card(props: CardProps) {
   let statistics = data.stats && Object.values(data.stats);
   const dispatch = useDispatch();
   const { fullScreenMode, afterViewInitialized } = useSelector((state: any) => state.appReducer);
+  const [selectedOption, setSelectedOption] = useState('');
 
   const toggleToFullScreen = (title: string) => {
     dispatch(toggleFullScreenCard(title.toLowerCase()));
   };
+
+  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const { value } = e?.target;
+    setSelectedOption(value);
+    dispatch(sortTheTable({ type: headerTitle.toLowerCase(), sort: value }))
+  }
 
   if (fullScreenMode[headerTitle.toLowerCase()]) {
     return (
@@ -28,9 +37,9 @@ export default function Card(props: CardProps) {
           <h1>{headerTitle}</h1>
         </aside>
         <aside>
-          <select>
-            <option>Sort by value</option>
-            <option>Sort by label</option>
+          <select onChange={handleSelectChange} value={selectedOption}>
+            <option value="value">Sort by value</option>
+            <option value="label">Sort by label</option>
           </select>
           <button
             className={styles.button}
@@ -71,9 +80,9 @@ export default function Card(props: CardProps) {
             <h1>{headerTitle}</h1>
           </aside>
           <aside>
-            <select>
-              <option>Sort by value</option>
-              <option>Sort by label</option>
+            <select onChange={handleSelectChange} value={selectedOption}>
+              <option value="value">Sort by value</option>
+              <option value="label">Sort by label</option>
             </select>
             <button
               className={styles.button}
