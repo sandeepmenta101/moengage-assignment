@@ -1,7 +1,6 @@
 import initialState from "./initialState";
 import Types from '../actionTypes/app.actionTypes';
 import { sortData } from '../../helpers';
-import { DataInterface } from './../../interfaces/data.interface';
 
 export default function appReducer (state = initialState, action: any) {
     switch (action.type) {
